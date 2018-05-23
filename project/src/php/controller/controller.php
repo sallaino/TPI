@@ -6,5 +6,8 @@
  * Description:
  */
 
-require('../model/model.php');
+require('../model/getAnimalData.php');
 
+$req = getAnimalData();
+
+require ('../view/index.php');
