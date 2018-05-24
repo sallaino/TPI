@@ -29,7 +29,7 @@ $nav = '';
         <tbody>
         <?php while ($data = $req->fetch(PDO::FETCH_ASSOC)) {
 
-            $date = new DateTime($data['aniBirthDate']);
+            $birthDate = new DateTime($data['aniBirthDate']);
             ?>
 
             <tr>
@@ -40,15 +40,15 @@ $nav = '';
                     <?= $data['aniName'] ?>
                 </td>
                 <td>
-                    <?= $date->format('d.m.Y') ?>
+                    <?= $birthDate->format('d.m.Y') ?>
                 </td>
                 <td>
                     <?= $data['aniChipNumber'] ?>
                 </td>
                 <td style="text-align: right">
-                    <a class="btn btn-primary btn" style="display: inline-block" href="../controller/detailAnimalCon.php?idAnimal=<?=$data['idAnimal']?>" role="button">Détails</span></a>
-                    <a class="btn btn-success btn" style="display: inline-block" href="../controller/editAnimalCon.php?idAnimal=<?=$data['idAnimal']?>" role="button">Modifier</span></a>
-                    <a class="btn btn-danger btn" style="display: inline-block" href="../controller/delAnimalCon.php?idAnimal=<?=$data['idAnimal']?>" role="button">Supprimer</span></a>
+                    <a class="btn btn-primary btn" style="display: inline-block" href="../php/router.php?action=getAnimalDetail&idAnimal=<?=$data['idAnimal']?>" role="button">Détails</span></a>
+                    <a class="btn btn-success btn" style="display: inline-block" href="../php/router.php?action=editAnimal&idAnimal=<?=$data['idAnimal']?>" role="button">Modifier</span></a>
+                    <a class="btn btn-danger btn" style="display: inline-block" href="../php/router.php?action=delAnimal&idAnimal=<?=$data['idAnimal']?>" role="button">Supprimer</span></a>
                 </td>
             </tr>
         <?php } ?>
@@ -133,7 +133,7 @@ $nav = '';
         </div>
     </div>
 
-
+</main><!-- /.container -->
 
 <?php
 
