@@ -19,8 +19,9 @@
     <title><?= $title ?></title>
 
     <!-- Bootstrap core CSS -->
-    <link href="../../../resources/css/bootstrap.css" rel="stylesheet">
-    <link href="../../../resources/css/starter-template.css" rel="stylesheet">
+    <link href="../../resources/css/bootstrap.css" rel="stylesheet">
+    <link href="../../resources/css/starter-template.css" rel="stylesheet">
+    <link href="../../resources/css/PetLaForme.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
     <link href="starter-template.css" rel="stylesheet">
@@ -28,22 +29,26 @@
 
 <body>
 <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
-    <a class="navbar-brand" href="../controller/controller.php">Pet La Forme</a>
+    <a class="navbar-brand" href="./router.php?action=getAnimalData">Pet La Forme</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault"
             aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
-
     <div class="collapse navbar-collapse" id="navbarsExampleDefault">
         <ul class="navbar-nav mr-auto">
             <?= $nav ?>
         </ul>
     </div>
+    <form class="form-inline my-2 my-lg-0">
+        <a class="btn btn-link color-link-login" style="display: inline-block;text-decoration: none;" href="" >Se connecter</span></a>
+        <a class="btn btn-link color-link-login" style="display: inline-block;text-decoration: none;" href="" >Créer un compte</span></a>
+    </form>
+
 </nav>
 
 <?= $content ?>
 
-</main><!-- /.container -->
+
 
 <footer></footer>
 
