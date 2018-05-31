@@ -6,24 +6,40 @@
  * Time: 09:13
  */
 
-require('../php/controller/controller.php');
+
+
+require('../php/controller/controllerManager.php');
+
+
 
 try{
     if (isset($_GET['action'])) {
 
-        if ($_GET['action'] == 'getAnimalData') {
-            getAnimals();
-        } elseif ($_GET['action'] == 'getAnimalDetail')
+        if ($_GET['action'] == 'indexAction') {
+            $index = new controllerManager();
+            $index->indexAction();
+
+        } elseif ($_GET['action'] == 'detailsAction')
         {
             if (isset($_GET['idAnimal'])) {
-                getAnimalDetails();
+                $detail = new controllerManager();
+                $detail->detailsAction();
             }
+        }elseif ($_GET['action'] == 'deleteAction'){
+            $delete = new controllerManager();
+            $delete->deleteAction();
+        }elseif ($_GET['action'] == 'addAnimal'){
+            $addAnimal = new controllerManager();
+            $addAnimal->addAnimal();
+        }else{
+            throw new Exception('Erreur 404 page introuvable');
         }
     }else{
-        getAnimals();
+        $index = new controllerManager();
+        $index->indexAction();
     }
 }catch(Exception $exception){
-    echo 'Erreur : ' . $exception->getMessage();
+    $error = $exception->getMessage();
     require('../php/view/error.php');
 }
 
