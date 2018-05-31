@@ -9,131 +9,139 @@
 $title = 'Pet La Forme - Accueil';
 
 ob_start();
-
-$nav = '';
-
 ?>
     <body>
-<main role="main" class="container">
+    <main role="main" class="container">
 
-    <table class="table">
-        <thead>
-        <tr style="background-color: #4e656b; color: #fff;">
-            <th>Type - Race</th>
-            <th>Nom</th>
-            <th>Date de naissance</th>
-            <th>Numéro de puce</th>
-            <th></th>
-        </tr>
-        </thead>
-        <tbody>
-        <?php while ($data = $req->fetch(PDO::FETCH_ASSOC)) {
-
-            $birthDate = new DateTime($data['aniBirthDate']);
-            ?>
-
-            <tr>
-                <td>
-                    <?= $data['typType'] . ' - ' . $data['racRace'] ?>
-                </td>
-                <td>
-                    <?= $data['aniName'] ?>
-                </td>
-                <td>
-                    <?= $birthDate->format('d.m.Y') ?>
-                </td>
-                <td>
-                    <?= $data['aniChipNumber'] ?>
-                </td>
-                <td style="text-align: right">
-                    <a class="btn btn-primary btn" style="display: inline-block" href="../php/router.php?action=getAnimalDetail&idAnimal=<?=$data['idAnimal']?>" role="button">Détails</span></a>
-                    <a class="btn btn-success btn" style="display: inline-block" href="../php/router.php?action=editAnimal&idAnimal=<?=$data['idAnimal']?>" role="button">Modifier</span></a>
-                    <a class="btn btn-danger btn" style="display: inline-block" href="../php/router.php?action=delAnimal&idAnimal=<?=$data['idAnimal']?>" role="button">Supprimer</span></a>
-                </td>
+        <table class="table table-responsive-sm">
+            <thead>
+            <tr style="background-color: #4e656b; color: #fff;">
+                <th>Type - Race</th>
+                <th>Nom</th>
+                <th>Date de naissance</th>
+                <th>Numéro de puce</th>
+                <th><a class="btn btn-success btn" style="display: inline-block;float: right"
+                        href="../php/router.php?action=addAnimal"
+                        role="button">Ajouter un animal</span></a></th>
             </tr>
-        <?php } ?>
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
+            <?php while ($data = $req->fetch(PDO::FETCH_ASSOC)) {
 
-    <div class="row">
-        <div class="col-lg-6">
-            <div class="jumbotron">
-                <h1 class="display-6">Derniers vaccins</h1>
-                <table class="table">
-                    <thead>
-                    <tr>
-                        <th>
-                            Date
-                        </th>
-                        <th>
-                            Nom
-                        </th>
-                        <th>
-                            Raison
-                        </th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr>
-                        <td>
-                            12.02.2000
-                        </td>
-                        <td>
-                            Félix
-                        </td>
-                        <td>
-                            Immunodéficiance Féline
-                        </td>
-                    </tr>
 
-                    </tbody>
-                </table>
-                <p class="lead">
-                    <a class="btn btn-primary btn-lg" href="#" role="button">Afficher tous les vaccins</a>
-                </p>
+                if ($data['aniDeleted'] == false){
+
+                $birthDate = new DateTime($data['aniBirthDate']);
+                ?>
+
+                <tr>
+                    <td>
+                        <?= $data['typType'] . ' - ' . $data['racRace'] ?>
+                    </td>
+                    <td>
+                        <?= $data['aniName'] ?>
+                    </td>
+                    <td>
+                        <?= $birthDate->format('d.m.Y') ?>
+                    </td>
+                    <td>
+                        <?= $data['aniChipNumber'] ?>
+                    </td>
+                    <td style="text-align: right">
+                        <a class="btn btn-primary btn" style="display: inline-block"
+                           href="../php/router.php?action=detailsAction&idAnimal=<?= $data['idAnimal'] ?>"
+                           role="button">Détails</span></a>
+                        <a class="btn btn-edit btn" style="display: inline-block"
+                           href="../php/router.php?action=editAction&idAnimal=<?= $data['idAnimal'] ?>"
+                           role="button">Modifier</span></a>
+                        <a class="btn btn-danger btn" style="display: inline-block"
+                           href="../php/router.php?action=deleteAction&idAnimal=<?= $data['idAnimal'] ?>"
+                           role="button">Supprimer</span></a>
+                    </td>
+                </tr>
+            <?php } } ?>
+            </tbody>
+        </table>
+
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="jumbotron">
+                    <h1 class="display-6">Derniers vaccins</h1>
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th>
+                                Date
+                            </th>
+                            <th>
+                                Nom
+                            </th>
+                            <th>
+                                Raison
+                            </th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>
+                                12.02.2000
+                            </td>
+                            <td>
+                                Félix
+                            </td>
+                            <td>
+                                Immunodéficiance Féline
+                            </td>
+                        </tr>
+
+                        </tbody>
+                    </table>
+                    <p class="lead">
+                        <a class="btn btn-primary btn-lg" href="#" role="button">Afficher tous les vaccins</a>
+                    </p>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="jumbotron">
+                    <h1 class="display-6">Derniers rappels</h1>
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th>
+                                Date
+                            </th>
+                            <th>
+                                Nom
+                            </th>
+                            <th>
+                                Vaccin
+                            </th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>
+                                12.02.2000
+                            </td>
+                            <td>
+                                Félix
+                            </td>
+                            <td>
+                                Vermifuge
+                            </td>
+                        </tr>
+
+                        </tbody>
+                    </table>
+
+                    <p class="lead">
+                        <a class="btn btn-primary btn-lg" href="#" role="button">Afficher tous les rappels</a>
+                    </p>
+                </div>
             </div>
         </div>
-        <div class="col-lg-6">
-            <div class="jumbotron">
-                <h1 class="display-6">Derniers rappels</h1>
-                <table class="table">
-                    <thead>
-                    <tr>
-                        <th>
-                            Date
-                        </th>
-                        <th>
-                            Nom
-                        </th>
-                        <th>
-                            Vaccin
-                        </th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr>
-                        <td>
-                            12.02.2000
-                        </td>
-                        <td>
-                            Félix
-                        </td>
-                        <td>
-                            Vermifuge
-                        </td>
-                    </tr>
 
-                    </tbody>
-                </table>
-
-                <p class="lead">
-                    <a class="btn btn-primary btn-lg" href="#" role="button">Afficher tous les rappels</a>
-                </p>
-            </div>
-        </div>
-    </div>
-
-</main><!-- /.container -->
+    </main><!-- /.container -->
 
 <?php
 
@@ -141,5 +149,7 @@ $req->closeCursor();
 
 $content = ob_get_clean();
 
+
 require('template.php');
+
 
