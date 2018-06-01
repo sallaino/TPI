@@ -42,7 +42,7 @@ $birthDate = new DateTime($data['aniBirthDate']);
     <div class="row">
         <div class="col-sm-5">
             <div>
-                <img src="<?= $data['aniLinkPhoto'] ?>" class="img-fluid " alt="test">
+                <img src="<?= $data['aniLinkPhoto'] ?>" class="img" alt="test" height="200px" width="200px">
 
             </div>
             <br>
