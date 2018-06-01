@@ -5,6 +5,7 @@
  * Date: 23.05.2018
  * Time: 13:46
  */
+
 ?>
 
 <!doctype html>
@@ -46,11 +47,12 @@
 
             ?>
         </ul>
+
         <form class="form-inline my-2 my-lg-0">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
                     <a class="btn btn-link color-link-login" style="display: inline-block;text-decoration: none;"
-                       href="">Se
+                       href="./router.php?action=loginAction">Se
                         connecter</span></a>
                 </li>
                 <li class="nav-item">
@@ -64,10 +66,13 @@
         </form>
     </div>
 
-
 </nav>
 
-<?= $content ?>
+<?php
+if (!empty($content)) {
+  echo $content;
+  }
+   ?>
 
 
 <footer>
