@@ -9,7 +9,6 @@
 class animalManager
 {
 
-
     public function getAnimals()
     {
 
@@ -66,15 +65,13 @@ class animalManager
 
     }
 
-    public function addAnimal($aniName, $aniBirthDate, $aniChipNumber, $aniLinkPhoto, $fkIdUser, $fkIdRace)
+    public function addAnimal($aniName, $aniBirthDate, $aniChipNumber, $aniLinkPhoto,$fkIdUser, $fkRace)
     {
 
-        if (!empty($aniName) && !empty($aniBirthDate) && !empty($fkIdUser) && ($fkIdRace)) {
+
             $db = $this->dbConnect();
 
-            $add = $db->exec('INSERT INTO t_animal(aniName,aniBirthDate,aniChipNumber,aniLinkPhoto,fkIdUser,fkIdRace)VALUES(' . $aniName . ',' . $aniBirthDate . ',' . $aniChipNumber . ',' . $aniLinkPhoto . ',' . $fkIdUser . ',' . $fkIdRace . ')');
-
-        }
+            $add = $db->exec('INSERT INTO t_animal(aniName,aniBirthDate,aniChipNumber,aniLinkPhoto,fkIdUser,fkRace) VALUES("'.$aniName.'",'.$aniBirthDate.','.$aniChipNumber.',' . $aniLinkPhoto . ','. $fkIdUser .','.$fkRace.')');
     }
 
     public function getAnimalWeight($id)
@@ -113,6 +110,15 @@ class animalManager
 
     }
 
+    public function getLoginData($useName,$usePassword){
+
+      $db = $this->dbConnect();
+
+      $login = $db->query('SELECT * FROM t_user WHERE (t_user.useName ="'.$useName .'" OR t_user.useEmail ="'.$useName.'")');
+
+      return $login;
+
+    }
 
     private function dbConnect()
     {
