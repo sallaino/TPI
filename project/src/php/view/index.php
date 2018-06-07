@@ -3,7 +3,7 @@
 * Etml
 * Author: sallaino
 * Date: 03.05.2018
-* Description: Home page where the list of animal is showed 
+* Description: Home page where the list of animal is showed
 */
 
 $title = 'Pet La Forme - Accueil';
@@ -91,18 +91,7 @@ ob_start();
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <td>
-                    12.02.2000
-                  </td>
-                  <td>
-                    Félix
-                  </td>
-                  <td>
-                    Immunodéficiance Féline
-                  </td>
-                </tr>
-
+          
               </tbody>
             </table>
             <p class="lead">
@@ -128,17 +117,6 @@ ob_start();
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <td>
-                    12.02.2000
-                  </td>
-                  <td>
-                    Félix
-                  </td>
-                  <td>
-                    Vermifuge
-                  </td>
-                </tr>
 
               </tbody>
             </table>

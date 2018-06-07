@@ -53,7 +53,7 @@ class modelManager
 
     if (isset($id) && !empty($id)) {
 
-      $req = $db->query('SELECT * FROM t_animal INNER JOIN t_race on t_animal.fkRace = t_race.idRace INNER JOIN t_typeandrace on t_race.idRace = t_typeandrace.fkRace INNER JOIN t_type on t_typeandrace.fkidType = t_type.idType INNER JOIN t_weight on t_weight.fkIdAnimal = t_animal.idAnimal WHERE t_animal.idAnimal =' . $id);
+      $req = $db->query('SELECT * FROM t_animal INNER JOIN t_race on t_animal.fkRace = t_race.idRace INNER JOIN t_typeandrace on t_race.idRace = t_typeandrace.fkRace INNER JOIN t_type on t_typeandrace.fkidType = t_type.idType  WHERE t_animal.idAnimal =' . $id);
 
       return $req;
 
@@ -134,9 +134,10 @@ class modelManager
   public function addAnimal($aniName, $aniBirthDate, $aniChipNumber, $aniLinkPhoto,$fkIdUser, $fkRace)
   {
 
+
     $db = $this->dbConnect();
 
-    $add = $db->exec('INSERT INTO t_animal(aniName,aniBirthDate,aniChipNumber,aniLinkPhoto,fkIdUser,fkRace) VALUES("'.$aniName.'",'.$aniBirthDate.','.$aniChipNumber.',' . $aniLinkPhoto . ','. $fkIdUser .','.$fkRace.')');
+    $add = $db->exec('INSERT INTO t_animal(aniName,aniBirthDate,aniChipNumber,aniLinkPhoto,fkIdUser,fkRace) VALUES("'.$aniName.'","'.$aniBirthDate.'","'.$aniChipNumber.'","' . $aniLinkPhoto . '","'. $fkIdUser .'","'.$fkRace.'")');
   }
 
 

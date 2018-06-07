@@ -14,6 +14,7 @@ ob_start();
 
 $nav = '';
 
+
 $typeAndRaceData = array();
 while ($data = $typeandrace->fetch(PDO::FETCH_ASSOC)) {
 
@@ -122,7 +123,7 @@ while ($data = $typeandrace->fetch(PDO::FETCH_ASSOC)) {
           </div>
         </div>
 
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="submit" class="btn btn-success" style="float:right">Ajouter</button>
       </form>
     </div>
 

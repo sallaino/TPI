@@ -207,6 +207,8 @@ class controllerManager
 
       $aniRace = $_POST['aniRace'];
 
+
+
       // Call the addAnimal() function to add the animal in the data base
       $addAnimalInformations = $modelManager->addAnimal($animalName,$animalBirthDate,$aniChipNumber,$aniLinkPhoto,$_SESSION['idAuth'],$aniRace);
     }
