@@ -1,10 +1,11 @@
 <?php
 /**
- * Created by PhpStorm.
- * User: sallaino
- * Date: 24.05.2018
- * Time: 11:01
- */
+* Etml
+* Author: sallaino
+* Date: 24.05.2018
+* Description: Error page, allow to show the error 
+*/
+
 
 $title = 'Pet La Forme - Erreurs';
 
@@ -16,14 +17,12 @@ $nav = '';
 //$req->closeCursor();
 
 ?>
-
-    <div class="alert alert-info" role="alert">
-        <h4 class="alert-heading">Oups !</h4>
-        <p><?= $error ?></p>
-        <hr>
-        <p class="mb-0">Vous serrez redirigé automatiquement dans 5 seconds !</p>
-    </div>
-
+<main role="main" class="container-addAnimal">
+  <div class="alert alert-info" role="alert">
+    <h4 class="alert-heading">Oups !</h4>
+    <p><?= $error ?></p>
+  </div>
+</main>
 <?php
 
 

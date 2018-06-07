@@ -1,10 +1,11 @@
 <?php
 /**
- * Created by PhpStorm.
- * User: sallaino
+ * Etml
+ * Author: sallaino
  * Date: 23.05.2018
- * Time: 13:46
+ * Description: Template og the application
  */
+
 
 ?>
 
@@ -32,7 +33,15 @@
 <body>
 
 <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
-    <a class="navbar-brand" href="./router.php?action=indexAction">Pet La Forme</a>
+
+    <?php
+      if (!empty($_SESSION['idAuth']) || isset($_SESSION['idAuth'])) {
+     ?>
+      <a class="navbar-brand" href="./router.php?action=indexAction">Pet La Forme</a>
+     <?php
+}
+      ?>
+
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navBar"
             aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -47,23 +56,54 @@
 
             ?>
         </ul>
+        <?php
 
-        <form class="form-inline my-2 my-lg-0">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item">
-                    <a class="btn btn-link color-link-login" style="display: inline-block;text-decoration: none;"
-                       href="./router.php?action=loginAction">Se
-                        connecter</span></a>
-                </li>
-                <li class="nav-item">
-                    <a class="btn btn-link color-link-login" style="display: inline-block;text-decoration: none;"
-                       href="">Créer
-                        un compte</span></a>
-                </li>
-            </ul>
+        if (empty($_SESSION['idAuth']) || !isset($_SESSION['idAuth'])) {
+          ?>
+          <form class="form-inline my-2 my-lg-0">
+              <ul class="navbar-nav mr-auto">
+                  <li class="nav-item">
+                      <a class="btn btn-link color-link-login" style="display: inline-block;text-decoration: none;"
+                         href="./router.php?action=loginAction">Se
+                          connecter</span></a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="btn btn-link color-link-login" style="display: inline-block;text-decoration: none;"
+                         href="./router.php?action=registerAction">Créer
+                          un compte</span></a>
+                  </li>
+              </ul>
 
 
-        </form>
+          </form>
+          <?php
+        }else {
+          ?>
+
+          <form class="form-inline my-2 my-lg-0">
+              <ul class="navbar-nav mr-auto">
+                <div class="">
+                  <li class="nav-item">
+                    <p style="color:#fff">connecté en tant que : <?= $_SESSION['auth'] ?></p>
+                  </li>
+                </div>
+
+                  <div class="">
+                    <li class="nav-item">
+                      <a class="btn btn-link color-link-login" style="font-size:12;display:block;text-decoration: none;color:cyan;"
+                         href="./router.php?action=logoutAction">déconnexion</span></a>
+                    </li>
+                  </div>
+
+              </ul>
+
+
+          </form>
+        <?php
+        }
+
+         ?>
+
     </div>
 
 </nav>
